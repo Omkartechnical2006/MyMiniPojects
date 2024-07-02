@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #main {
+            width: 100vw;
+            height: 100vh;
+            background-color: #261414;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input {
+            width: 80%;
+            font-size: 55px;
+        }
+
+        h1,
+        h3,
+        p {
+            color: white;
+        }
+
+        p {
+            font-size: xx-large;
+            text-transform: capitalize;
+        }
+
+        #restart {
+            height: 50px;
+            width: 50px;
+            background-color: white;
+            border-radius: 50%;
+            color: black;
+            transition: .5s ease-in;
+            border: none;
+            padding: 12px;
+            font-size: xx-large;
+            font-weight: bolder;
+        }
+
+        #restart:hover {
+            background-color: aqua;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <h1>Write and press Enter</h2>
+            <h3>Guess the number</h3>
+            <input type="number" name="num" id="number" onchange="ram()">
+            <p id="result"></p>
+    </div>
+    <script>
+        raGenerator();
+        let count=5;
+        let b=raGenerator();
+        function raGenerator(){
+        let a = Math.floor(Math.random() * 100);
+         return Number(a);
+        }
+        let result = document.getElementById('result');
+        let input = document.getElementById('number');
+        function ram() {
+            if (b > Number(input.value)) {
+                result.innerHTML = "your number is smaller";
+            } else if (b < Number(input.value)) {
+                result.innerHTML = "you number is bigger";
+            } else if (b == Number(input.value)) {
+                result.innerHTML = `You are correct! Our number was ${b}`;
+                let main = document.getElementById('main');
+                let ele = document.createElement('button');
+                // ele.innerHTML = 'Restart';
+                ele.id = "restart";
+                // ele.onclick=restart();
+                main.appendChild(ele);
+           const intervalli=setInterval(() => {
+                   ele.innerHTML=count;
+                   if(count==0){
+                       clearInterval(intervalli);
+                       main.children[(main.children.length)-1].remove();
+                       count=5;
+                       result.innerHTML='';
+                       b=raGenerator();
+                    }
+                    count--;
+                }, 1000);
+            }
+        }
+
+    
+    </script>
+</body>
+
+</html>

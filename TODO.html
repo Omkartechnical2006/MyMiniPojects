@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            box-sizing: border-box;
+        }
+
+        button {
+            border: none;
+            border: 1px solid gray;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .flex {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .flex button {
+            border-radius: 0 1rem 1rem 0;
+            padding: 1.4%;
+            background-color: #0d6efd;
+        }
+
+        input {
+            border-color: #0d6efd;
+            width: 84vw;
+            padding: 1%;
+            font-size: 1rem;
+            font-weight: bolder;
+            border-radius: 8px 0 0 8px;
+        }
+
+        .container {
+            background-color: #eeec5a;
+            margin-right: 10px;
+            margin-left: 10px;
+            margin-top: 5%;
+            border-radius: 35px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .listed {
+            display: flex;
+            flex-direction: row;
+            margin-top: 5px;
+            background-color: white;
+            border-radius: 8px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            justify-content: space-between;
+            border-bottom: 2px solid #fff;
+            border-width: 100%;
+            padding-right: 5px;
+
+        }
+
+        .listItem {
+            margin-top: 5px;
+            background-color: gray;
+            width: 100%;
+            padding-left: 5px;
+            border-radius: 15px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            text-align: center;
+            padding-block: 2%;
+            width: 80%;
+            overflow: hidden;
+        }
+
+        #edit {
+            margin-top: 2px;
+            background-color: #dc3545;
+            padding: 2.5%;
+            margin-right: 5px;
+            border-radius: 10px;
+            color: white;
+            font-size: large;
+            font-weight: bold;
+        }
+
+        #remove {
+            margin-top: 2px;
+            color: white;
+            border-radius: 10px;
+            padding: 1.5%;
+            background-color: #ffc107;
+            font-size: large;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container center">
+        <div class="flex">
+            <input type="text" name="add" id="inputValue"><button id="add">Add</button>
+        </div>
+        <ul id="mainItem" class="listItem">
+            <li class="listed">
+                <h3 contenteditable="false"> Thank You!💔For using this application Rate us now!</h3>
+                <button id="edit" onclick="edit(this)">Edit</button>
+                <button id="remove" onclick="remove(this)">Remove</button>
+            </li>
+        </ul>
+    </div>
+    <script>
+        if (!(localStorage.getItem('myData') == null)) {
+            document.body.innerHTML = localStorage.getItem('myData');
+        }
+        let input = document.getElementById('inputValue');
+        let mainItem = document.getElementById('mainItem');
+        document.getElementById('add').onclick = function () {
+            if (input.value == "") {
+                alert("Enter something in box");
+            } else {
+                if (mainItem.children[0].id == 'nothing') {
+                    mainItem.children[0].remove();
+                }
+                console.log(input.value);
+                let text = document.createElement('li');
+                text.className = 'listed';
+                text.innerHTML = ` <h3 contenteditable="false">${input.value}</h3>
+            <button  id="edit" onclick="edit(this)">Edit</button>
+            <button id="remove" onclick="remove(this)">Remove</button>`;
+                mainItem.appendChild(text);
+                setItemall();
+            }
+        }
+        function remove(element) {
+            element.parentElement.remove();
+            if (mainItem.children.length <= 0) {
+                mainItem.innerHTML = `<h2 id="nothing" style='color:white; text-align:center;'>Here's nothing to show anything</h2>`;
+            }
+            setItemall();
+        }
+        function edit(edElement) {
+            let contentState = edElement.parentElement.children[0].contentEditable;
+            if (contentState == 'false') {
+                edElement.parentElement.children[0].contentEditable = 'true';
+            } else {
+                edElement.parentElement.children[0].contentEditable = 'false';
+            }
+            setItemall();
+
+        }
+        function setItemall() {
+            localStorage.setItem('myData', document.body.innerHTML);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <title>Mera Taj</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+}
+header{
+    width: 100%; height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)), url('images/taj.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;/*100%,100%*/
+}
+nav{
+    top: 0;
+    width: 100%;
+    height: 15vh;
+    color: white;
+    background: rgba(0, 0, 0, 0.2);/*light transparent black color*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+}
+nav .logo{
+    width: 25%;
+    font-size: 1.5em;
+    text-align: center;
+}
+nav .menu{
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+}
+nav .menu a{
+    width: 25%;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+main{
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+section h3{
+    font-size: 35px;
+    font-weight: 200;
+    letter-spacing: 3px;
+    text-shadow: 5px 1px 2px black;/*1px 1px 2px black will be good*/
+}
+section h1{
+    margin: 30px 0 20px 0;
+    font-size: 55px;
+    font-weight: 700;
+    text-shadow: 2px 1px 5px black;
+    text-transform: uppercase;
+}
+section p{
+    font-size: 25px;
+    word-spacing: 2px;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 1px black;
+}
+section a{
+    padding: 12px 30px;
+    border-radius: 4px;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all .5s ease;
+}
+section .btnOne{
+    background: #fff;
+    color: #000;
+}
+.btnOne:hover{
+    background: #00b894;
+    color: white;
+}
+section .btnTwo{
+    background: #00b894;
+    color: white;
+}
+.btnTwo:hover{
+    background: #fff;
+    color: #000;
+}
+nav .menu a:first-child{
+    color: #00b894;
+}
+.change_content:after{
+    content: '';
+    animation: changetext 10s infinite linear;
+    color: #00b894;
+}
+@keyframes changetext {
+    0%{content: "Darjelling";}
+    20%{content: "Agra";}
+    35%{content: "Jaipur";}
+    60%{content: "Kerala";}
+    80%{content: "delhi";}
+    100%{content: "mumbai";}
+} 
+/*.animated{
+    animation: heart 1s infinite ease-in;
+}
+@keyframes heart {
+    0%{font-size: 1.5em;}
+    25%{font-size: 35px;}
+    75%{font-size: 30px;}
+    100%{font-size: 1.5em;}
+}*/
+marquee{
+    color: red;
+    height: 5vh;
+    background-color: yellow;
+    text-align: center;
+    padding-top: 5px;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    display: none;
+}
+.animated{
+    transform: rotate(45deg);
+    animation: animateHeart 1.2s infinite;
+}
+@keyframes animateHeart {
+    0%{transform: rotate(0deg) scale(0.8);}
+    5%{transform: rotate(0deg) scale(0.9);}
+    10%{transform: rotate(0deg) scale(0.8);}
+    15%{transform: rotate(0deg) scale(1);}
+    50%{transform: rotate(0deg) scale(0.8);}
+    100%{transform: rotate(0deg) scale(0.8);}
+}
+@media screen and (max-width: 880px) {
+    nav .menu{
+        display: none;
+    }
+    nav .logo{
+        width: 100%;
+        text-align: center;
+    }
+  }
+  
+    </style>
+</head>
+<body>
+    <marquee id="marquee" behavior="" direction="rel">Hey guys! Omkar is round of the corner. it's not responsive but in the future i will make it responisve.</marquee>
+    <header>
+        <nav>
+            <div class="logo"><h1 class="animated infinite heartBeat">Mera bharat</h1></div>
+            <div class="menu">
+                <a href="#">Home</a>
+                <a href="#">Gallery</a>
+                <a href="#">about</a>
+                <a href="#">contact</a>
+            </div>
+        </nav>
+            <main>
+                <section>
+                    <h3>Welcome To India</h3>
+                    <h1>DO COME & VISIT <span class="change_content"> </span></h1>
+                    <p>"India once is not enough"</p>
+                    <a href="#" class="btnOne" id="btnOne">Learn more</a>
+                    <a href="#" class="btnTwo" id="btnTwo">signup free</a>
+                </section>
+            </main>
+    </header>
+    <script>
+        document.getElementById('btnOne').addEventListener('click',disply=()=>{
+            document.getElementById('marquee').style.display='none';
+        });
+        document.getElementById('btnTwo').addEventListener('click',disply=()=>{
+            document.getElementById('marquee').style.display='block';
+        });
+    </script>
+</body>
+</html>

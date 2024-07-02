@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Challenge!</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            padding: 12px;
+            text-decoration: none;
+            float: left;
+        }
+
+        nav a:last-child {
+            float: right;
+        }
+
+        nav a:not(a:last-child):hover {
+            background-color: #ddd;
+        }
+
+        nav a:last-child {
+            background-color: lightcoral;
+        }
+
+        nav a:last-child:hover {
+            background-color: red;
+        }
+
+        button {
+            padding: 12px;
+            margin: 12px;
+            margin-top: 15%;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        p {
+            font-size: 14px;
+            text-align: justify;
+        }
+
+        .rules {
+            display: flex;
+            justify-content: center;
+            border: 2px solid red;
+            margin: 20px;
+            padding: 20px;
+        }
+        @media only screen and (max-width: 650px) {
+            nav{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        nav a{
+            width: 100%;
+            text-align: center;
+        }
+        nav a:last-child{
+            background-color: #333;
+        }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">News</a>
+        <a href="#">Contacts</a>
+        <a href="#">Login/SignUp</a>
+    </nav>
+    <div class="rules">
+        <p>hey! captain I wanna more questions from you please give me a hard questions who is really defficult please
+            ask questions if i know then i well tell you it's nothing for me. and if you have no believe(trust) on me.
+            then you can give me that homework i will solve you. if you question will look hard then i will tell you
+            that time also it's a hard question and i will try to solve it.</br>but <b>Please don't waste my time to
+                give these type of questions.</b></p>
+    </div>
+    <div class="buttons">
+        <button id="prompt1">prompt1</button>
+        <button id="prompt2">prompt2</button>
+        <button id="addition">Add</button>
+    </div>
+    <script>
+        let firstNum = 0;
+        let secondNum = 0;
+        document.getElementById('prompt1').addEventListener('click', prompt1 = () => {
+            let a = prompt("Enter you first num: ");
+            firstNum = Number(a);
+        });
+        document.getElementById('prompt2').addEventListener('click', prompt2 = () => {
+            let b = prompt("Enter you second Number: ")
+            secondNum = Number(b);
+        });
+        document.getElementById('addition').addEventListener('click', addition = () => {
+            if (firstNum != 0 && secondNum != 0) {
+                alert("you addition is: " + (firstNum + secondNum));
+            } else {
+                alert("hey user! we will not accept these please give values in both prompt! except 0")
+            }
+        });
+    </script>
+</body>
+
+</html>

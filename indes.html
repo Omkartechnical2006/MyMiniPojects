@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bold/ITallic/Undeline</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+        }
+        nav{
+            background-color: #333;
+            overflow: hidden;
+            position: sticky;
+            top: 0;
+        }
+        nav a{
+            text-decoration: none;
+            color: white;
+            display: block;
+            float: left;
+            padding: 12px;
+        }
+        nav a:last-child{
+            background-color: darkkhaki;
+            float: right;
+        }
+        nav a:last-child:hover{
+            background-color: lightcoral;
+        }
+        nav a:hover:not(a:last-child){
+            background-color: #ddd;
+        }
+        .container{
+            width: 100%;
+            margin: 5px;
+            padding: 12px;
+            text-align: justify;
+            border: 2px solid red;
+        }
+       button{
+        padding: 20px;
+        padding-right: 50px;
+        padding-left: 50px;
+        font-size: larger;
+        color: white;
+        border: none;
+        border-radius: 5px;
+       }
+       button:nth-child(1){
+        background-color: #f44336;
+       }
+       button:nth-child(2){
+        background-color: #ff9800;;
+       }
+       button:nth-child(3){
+        background-color: #2196F3;
+       }
+       .button{
+        display: flex;
+        justify-content: space-around;
+        margin-top: 50px;
+       }
+      .fullcontent{
+        background-color: #ddd;
+        padding: 10px;
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+      @media only screen and (max-width: 650px) {
+        .button{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .button button{
+            margin-bottom: 20px;
+        }
+        nav{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        nav a{
+            width: 100%;
+            text-align: center;
+        }
+        nav a:last-child{
+            background-color: #333;
+        }
+    }
+    .contt{
+        background-color: gold;
+    }
+    </style>
+</head>
+<body onload="bodyload()">
+    <div class="contt">
+    <marquee loop="100" scrolldelay="100"><span _ngcontent-xgg-c2="" class="marquee-span">• Let's do practice with omkar!  Do you have any more questions for me. <b style="text-transform: uppercase;" id="usermarquee"></b></span>
+</marquee>
+</div>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">News</a>
+    <a href="#">Contacts</a>
+    <a href="#" id="login">Login/SignUP</a>
+</nav>    
+<div class="fullcontent">
+<div class="container">
+<p id="paragraph">Lorem Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae, quasi maxime eligendi magnam deserunt optio dicta id nihil fugiat, atque quos nemo adipisci officia non, omnis nostrum voluptate? Ea dicta veritatis suscipit, soluta, laboriosam ratione culpa inventore aspernatur magni reprehenderit quae nisi odio libero sint accusamus voluptas molestiae consectetur quibusdam perspiciatis aliquam aperiam nobis fuga? Ducimus, ipsum consectetur mollitia, odit dolor molestias deserunt aliquid debitis in cum, numquam nisi officia est! Recusandae dicta tenetur odit est porro cumque fugit optio, veritatis excepturi accusamus corrupti aperiam ex laborum deleniti dignissimos quae repudiandae nulla facere, incidunt voluptatem qui repellat ipsam. Quae, nihil. Adipisci officiis reprehenderit animi natus veritatis numquam aperiam? Reiciendis iure esse tenetur sapiente, vitae dolor dolorem quos molestias error repudiandae, at, rem autem ipsam facilis numquam consequatur modi a quaerat perspiciatis. Veniam, eos similique. Ut atque consequuntur explicabo  adipisicing elit. Maxime neque, distinctio, voluptates sit quidem pariatur vitae dolorum iusto corrupti dignissimos illo nam eos molestiae nihil reprehenderit quaerat, eveniet ullam officia!</p>
+</div>
+<div class="button">
+    <button id="bold">Bold</button>
+    <button id="itallic">Itallic</button>
+    <button id="underline">Underline</button>
+</div>
+<p id="userName" style="font-weight: bolder; font-size: larger; text-align: center;"></p>
+</div>
+<script>
+    let paragraph = document.getElementById('paragraph');
+    document.getElementById('bold').addEventListener('click',bold=()=>{
+        paragraph.style='none';
+        paragraph.style.fontWeight='bolder';
+    });
+    document.getElementById('itallic').addEventListener('click',itallic=()=>{
+        paragraph.style='none';
+        paragraph.style.fontStyle='italic';
+    });
+    document.getElementById('underline').addEventListener('click',underline=()=>{
+        paragraph.style='none';
+        paragraph.style.textDecoration='underline';
+    });
+    function bodyload(){
+        let a=prompt("Enter your name: ");
+        if(a!=""){
+            document.getElementById('login').innerHTML=a.toUpperCase();
+        document.getElementById('userName').innerHTML="hey "+a+" are you ok!";
+        }else if(a==null){
+            document.getElementById('login').innerHTML=a.toUpperCase();
+            a=prompt("Hey user! Enter you name please: ");
+            document.getElementById('userName').innerHTML="hey "+a+" are you ok!";
+        }else{
+            document.getElementById('login').innerHTML=a.toUpperCase();
+            a=prompt("Hey user! Enter you name please: ");
+            document.getElementById('userName').innerHTML="hey "+a+" are you ok!";
+        }
+        document.getElementById('usermarquee').innerHTML=`hey ${a} this website is responsive your homework is please find any bug i wanna do that better.`
+    }
+</script>
+</body>
+</html>
